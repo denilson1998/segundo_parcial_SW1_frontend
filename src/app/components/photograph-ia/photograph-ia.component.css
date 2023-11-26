@@ -1,0 +1,64 @@
+h3 {
+    text-align: center;
+    margin-bottom: 10px;
+    position: relative;
+    color: rgb(15, 40, 41);
+}
+
+.container form {
+    /*  width: 100%;
+     position: absolute;
+     top: 60px;
+     left: 50px;
+     transition: 0.5s;*/
+    position: relative;
+    /* margin: 20px 10px 10px 10px; */
+    /* left: 50px; */
+    transition: 0.5s;
+    border-radius: 5px;
+    padding: 20px;
+    background: linear-gradient(to right, #1050ff, #06ffff);
+    border: 0.1rem solid black;
+    width: 50%;
+    margin: 0 auto;
+    margin-top: 10rem;
+    /* margin-left: auto;
+     margin-right: auto; */
+    display: block;
+}
+
+form input.input {
+    width: 100%;
+    padding: 8px 5px;
+    margin: 5px 0;
+    /* border: 0; */
+    border-bottom: 1px solid #999;
+    background-color: #fff;
+    outline: none;
+    /* background: transparent; */
+}
+
+form select.form-select {
+    width: 100%;
+    padding: 8px 5px;
+    margin: 5px 0;
+    border: 0;
+    border-bottom: 1px solid #999;
+    background-color: #fff;
+    outline: none;
+    font-size: medium;
+    /*  background: transparent;  */
+}
+
+form button {
+    width: auto;
+    height: 35px;
+    /* background: linear-gradient(to right, #1050ff, #06ffff); */
+    background-color: black;
+    border-radius: 30px;
+    border: 0;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    margin: 0 auto;
+}

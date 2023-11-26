@@ -1,0 +1,94 @@
+<app-navbar></app-navbar>
+<div class="col-5 mx-auto mt-3">
+    <p class="d-inline-flex gap-1" style="margin-top: 2rem;">
+        <a class="btn btn-primary" (click)="checkAvailable()" data-bs-toggle="collapse" href="#collapse1" role="button" aria-expanded="false" aria-controls="collapse1">Lista en las que aparece el Invitado</a>
+        <button class="btn btn-primary" (click)="checkAvailable()" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2" aria-expanded="false" aria-controls="collapse2">Lista Fotos Publicadas</button>
+        <button class="btn btn-primary" (click)="checkAvailable()" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="false" aria-controls="collapse3">Lista por Eventos</button>
+    </p>
+</div>
+<div *ngIf="isAvailableOne" class="col-9 mx-auto mt-2">
+    <div id="collapse1" class="collapse collapse-horizontal" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div *ngFor="let photography of userPhotographsOne" class="card m-3" style="width: 18rem;">
+                    <img ngif src="{{photography.img_url}}" style="border-radius: 1rem; margin-top: 1rem;" />
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Nombre del Evento: {{photography.nombre_evento}}</h5>
+
+                        <h5 class="">Album:</h5>
+                        <p class="card-text mx-auto ml-auto text-center">{{photography.nombre_album}}</p>
+                        <br>
+                        <h5>Descripcion Album:</h5>
+                        <p class="card-text mx-auto ml-auto text-center">Descripcion Album: {{photography.descripcion_album}}</p>
+                        <br>
+                        <h5>Descripcion Evento:</h5>
+                        <p class="card-text mx-auto ml-auto text-center">{{photography.descripcion_evento}}</p>
+                        <br>
+                        <h5 class="">Criterio:</h5>
+                        <p class="card-text mx-auto ml-auto">{{photography.criterio_calidad}}</p>
+                        <br>
+                        <h5 class="text-center">Fecha: {{photography.fecha_creacion}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="isAvailableTwo" class="col-9 mx-auto mt-2">
+    <div id="collapse2" class="collapse collapse-horizontal" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div *ngFor="let photography of userPhotographsTwo" class="card m-3" style="width: 18rem;">
+                    <img src="{{photography.img_url}}" style="border-radius: 1rem; margin-top: 1rem;" />
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Nombre del Evento: {{photography.nombre_evento}}</h5>
+
+                        <h5 class="">Album:</h5>
+                        <p class="card-text mx-auto ml-auto text-center">{{photography.nombre_album}}</p>
+                        <br>
+                        <h5>Descripcion Album:</h5>
+                        <p class="card-text mx-auto ml-auto text-center">Descripcion Album: {{photography.descripcion_album}}</p>
+                        <br>
+                        <h5>Descripcion Evento:</h5>
+                        <p class="card-text mx-auto ml-auto text-center">{{photography.descripcion_evento}}</p>
+                        <br>
+                        <h5 class="">Criterio:</h5>
+                        <p class="card-text mx-auto ml-auto">{{photography.criterio_calidad}}</p>
+                        <br>
+                        <h5 class="text-center">Fecha: {{photography.fecha_creacion}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="isAvailableThree" class="col-9 mx-auto mt-2">
+    <div id="collapse3" class="collapse collapse-horizontal" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div *ngFor="let photography of userPhotographsThree" class="card m-3" style="width: 18rem;">
+                    <img src="{{photography.img_url}}" style="border-radius: 1rem; margin-top: 1rem;" />
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Nombre del Evento: {{photography.nombre_evento}}</h5>
+
+                        <h5 class="">Album:</h5>
+                        <p class="card-text mx-auto ml-auto text-center">{{photography.nombre_album}}</p>
+                        <br>
+                        <h5>Descripcion Album:</h5>
+                        <p class="card-text mx-auto ml-auto text-center">{{photography.descripcion_album}}</p>
+                        <br>
+                        <h5>Descripcion Evento:</h5>
+                        <p class="card-text mx-auto ml-auto text-center">{{photography.descripcion_evento}}</p>
+                        <br>
+                        <h5 class="">Criterio:</h5>
+                        <p class="card-text mx-auto ml-auto">{{photography.criterio_calidad}}</p>
+                        <br>
+                        <h5 class="text-center">Fecha: {{photography.fecha_creacion}}</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<app-footer style="margin-top: 1rem;"></app-footer>

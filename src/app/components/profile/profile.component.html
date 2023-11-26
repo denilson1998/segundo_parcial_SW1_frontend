@@ -1,0 +1,87 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+    <div class="row" *ngIf="isClient">
+        <div class="col-md-4">
+            <!-- Profile Image -->
+            <img src="{{profilePhotographUrl}}" alt="User Profile Image" class="img-fluid rounded-circle profile-image">
+        </div>
+        <div class="col-md-4">
+            <!-- User Info -->
+            <div class="user-info">
+                <h2>{{userFullName}}</h2>
+                <p>Email: {{email}}</p>
+                <p>Direccion: {{address}}</p>
+                <p>Nombre del Evento: {{eventName}}</p>
+                <p>Descripción del Evento: {{eventDescription}}</p>
+                <p>Numero de Teléfono: {{phoneNumber}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="isAdmEvent">
+        <div class="col-md-4">
+            <!-- Profile Image -->
+            <img src="{{profilePhotographUrl}}" alt="User Profile Image" class="img-fluid rounded-circle profile-image">
+        </div>
+        <div class="col-md-6">
+            <!-- User Info -->
+            <div class="user-info">
+                <h2>{{userFullName}}</h2>
+                <p>Email: {{email}}</p>
+                <p>Numero de Teléfono: {{phoneNumber}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row" *ngIf="isPhotographer">
+        <div class="col-md-4">
+            <!-- Profile Image -->
+            <img src="{{profilePhotographUrl}}" alt="User Profile Image" class="img-fluid rounded-circle profile-image">
+        </div>
+        <div class="col-md-4">
+            <!-- User Info -->
+            <div class="user-info">
+                <h2>{{userFullName}}</h2>
+                <p>Email: {{email}}</p>
+                <p>Direccion: {{address}}</p>
+                <p>Nombre del Evento: {{eventName}}</p>
+                <p>Descripción del Evento: {{eventDescription}}</p>
+                <p>Numero de Teléfono: {{phoneNumber}}</p>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <!-- User Info -->
+            <div class="user-info">
+                <h2>{{userFullName}}</h2>
+                <p>Email: {{email}}</p>
+                <p>Numero de Teléfono: {{phoneNumber}}</p>
+                <p>Rol: {{phoneNumber}}</p>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div style="text-align: center; margin-top: 1rem;" *ngIf="isClient">
+        <button class="btn btn-primary " type="button " data-bs-toggle="modal" data-bs-target="#staticBackdrop">Registro Luxand</button>
+    </div>
+</div>
+<app-footer></app-footer>
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">Registro en Luxand</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Seleccione una imagen:</label>
+                    <input class="form-control" type="file" id="formFile" (change)="fileSelected($event)">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button (click)="registerLuxand()" type="button" class="btn btn-primary">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>

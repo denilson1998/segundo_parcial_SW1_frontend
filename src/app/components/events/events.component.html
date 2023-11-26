@@ -1,0 +1,269 @@
+<app-navbar></app-navbar>
+<div class="container mt-5">
+
+    <div class="col">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="margin-right: 0.5rem;">Registrar Evento</button>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col">
+            <div class="table-container table-responsive">
+                <!-- <table class="table table-dark table-bordered border-white table-hover"> -->
+                <table class="table table-success table-striped">
+                    <thead class="text-center">
+                        <tr>
+                            <!-- <th><abbr title="Position">Pos</abbr></th> -->
+                            <!-- <th>Cuf</th> -->
+                            <th class="col-sm-3">Descripción</th>
+                            <th class="col-sm-3">Fecha</th>
+                            <th class="col-sm-2">Hora</th>
+                            <th class="col-sm-2">Lugar</th>
+                            <th class="col-sm-2">Ubicacion</th>
+                            <th class="col-sm-2">Nombre Evento</th>
+                            <th class="col-sm-2">Puntaje</th>
+                            <th class="col-sm-2">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <tr class="table-info border-dark" [hidden]="variable2">
+                            <td [colSpan]=" 9 " class="centered">
+                                No hay Datos para la Busqueda!
+                            </td>
+                        </tr> -->
+                        <tr class="table-info border-dark " *ngFor="let event of eventList">
+
+
+                            <td>
+                                <p class="center-pharagraph">{{event.evento.descripcion}}</p>
+                            </td>
+                            <td>
+                                <p class="center-pharagraph">{{event.evento.fecha}}</p>
+                            </td>
+                            <td>
+                                <p class="center-pharagraph">{{event.evento.hora}}</p>
+                            </td>
+                            <td>
+                                <p class="center-pharagraph">{{event.evento.lugar}}</p>
+                            </td>
+                            <td>
+                                <p class="center-pharagraph">{{event.evento.ubicacion}}</p>
+                            </td>
+                            <td>
+                                <p class="center-pharagraph">{{event.evento.nombre_evento}}</p>
+                            </td>
+                            <td>
+                                <p class="center-pharagraph">{{event.evento.puntaje}}</p>
+                            </td>
+                            <td class="centered">
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="getPhotographersByEvent(event.fotografos)">Ver Fotografos</button>
+                                <br>
+                                <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal3" (click)="getPhotographers(event.evento.uid)" style="margin-top: 0.3rem;">Asignar Fotografos</button>
+                                <br>
+                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal4" (click)="getClients(event.evento.uid)" style="margin-top: 0.3rem;">Asignar Invitado</button>
+                                <br>
+                                <button type="button" class="btn btn-dark btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal5" (click)="getClientsAssistance(event.evento.uid)" style="margin-top: 0.3rem;">Lista Asistencia de Invitados</button>
+                                <br>
+                                <button type="button" class="btn btn-danger btn-sm" (click)="cancelEvent(event.evento.uid)" style="margin-top: 0.3rem;">Cancelar Evento</button>
+                                <br>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<app-footer></app-footer>
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content accordion">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Fotografos del Evento</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body formatCard" style="align-items: center;">
+                <div class="row align-items-center" style="magin: 0 auto; margin-left: 1rem;">
+                    <div class="card m-3" *ngFor="let photographer of eventPhotographers; let i = index" style="width: 20rem;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align: center!important;">Fotografo Número {{ i + 1}}</h5>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Email:</label>
+                                <textarea class="form-control formatCard" id="exampleFormControlTextarea1" rows="3" placeholder="{{photographer.correo_electronico}}" disabled></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Direccion:</label>
+                                <input type="text" class="form-control formatCard" placeholder="{{photographer.direccion}}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Especialidad:</label>
+                                <input type="text" class="form-control formatCard" placeholder="{{photographer.especialidad}}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Nombre:</label>
+                                <input type="text" class="form-control formatCard" placeholder="{{photographer.fullname}}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Telefono:</label>
+                                <input type="text" class="form-control formatCard" placeholder="{{photographer.nro_telefono}}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Tipo Fotografo:</label>
+                                <input type="text" class="form-control formatCard" placeholder="{{photographer.tipo_fotografo}}" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal to Register Event -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Registrar Evento</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Nombre:</label>
+                        <input type="text" [(ngModel)]="name" class="form-control formatCard" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Descripcion:</label>
+                        <input type="text" [(ngModel)]="description" class="form-control formatCard" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Fecha:</label>
+                        <input type="text" [(ngModel)]="date" class="form-control formatCard" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Hora:</label>
+                        <input type="text" [(ngModel)]="hour" class="form-control formatCard" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Lugar:</label>
+                        <input type="text" [(ngModel)]="place" class="form-control formatCard" placeholder="">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Ubicacion:</label>
+                        <input type="text" [(ngModel)]="location" class="form-control formatCard" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button (click)="registerEvent()" type="button" class="btn btn-primary">Registrar Evento</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Lista de Fotografos</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputPassword1" class="form-label">Seleccione un Fotografo para el evento:</label>
+                        <select class="form-select" name="photographer" aria-label="Default select example" [(ngModel)]="photographerUid" (ngModelChange)="changePhotographerUid()">
+                            <option *ngFor="let item of listPhotographers" [value]= "item.uid">{{item.fullname}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button (click)="registerPhotographerInEvent()" type="button" class="btn btn-primary">Asignar Fotografo</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal4" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Lista de Invitados</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="exampleInputPassword1" class="form-label">Seleccione un Invitado para el evento:</label>
+                        <select class="form-select" name="photographer" aria-label="Default select example" [(ngModel)]="clientUid" (ngModelChange)="changeClientUid()">
+                            <option *ngFor="let item of listClients" [value]= "item.uid">{{item.fullname}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button (click)="registerClientInEvent()" type="button" class="btn btn-primary">Asignar Invitado</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal5" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-scrollable">
+        <div class="modal-content accordion">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Invitados que Asistieron</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body formatCard" style="align-items: center;">
+                <div class="row align-items-center" style="magin: 0 auto; margin-left: 1rem;">
+                    <div class="card m-3" *ngFor="let clientAssistance of listClientsAssistance; let i = index" style="width: 20rem;">
+                        <div class="card-body">
+                            <h5 class="card-title" style="text-align: center!important;">Cliente Asistencia Número {{ i + 1}}</h5>
+                            <div class="form-group">
+                                <label for="exampleFormControlTextarea1">Email:</label>
+                                <textarea class="form-control formatCard" id="exampleFormControlTextarea1" rows="3" placeholder="{{clientAssistance.correo_electronico}}" disabled></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Direccion:</label>
+                                <input type="text" class="form-control formatCard" placeholder="{{clientAssistance.direccion}}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Especialidad:</label>
+                                <input type="text" class="form-control formatCard" placeholder="{{clientAssistance.especialidad}}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Nombre:</label>
+                                <input type="text" class="form-control formatCard" placeholder="{{clientAssistance.fullname}}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Telefono:</label>
+                                <input type="text" class="form-control formatCard" placeholder="{{clientAssistance.nro_telefono}}" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Tipo Fotografo:</label>
+                                <input type="text" class="form-control formatCard" placeholder="{{clientAssistance.tipo_fotografo}}" disabled>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

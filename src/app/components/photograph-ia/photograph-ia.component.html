@@ -1,0 +1,22 @@
+<app-navbar></app-navbar>
+
+
+<div class="container">
+
+    <form id="form" style="margin-top: 4rem;">
+        <h3>Registro Foto para IA</h3>
+        <div class="row">
+            <div class="col-12 col-sm-12">
+                <div class="mb-3">
+                    <label for="formFile" class="form-label">Seleccione una imagen:</label>
+                    <input class="form-control" type="file" id="formFile" (change)="fileSelected($event)">
+                </div>
+            </div>
+        </div>
+        <div class="" style="text-align: center; margin-top: 1rem;">
+            <button (click)="registerPhotographyIA()" type="button" class="btn btn-primary">Registrar</button>
+        </div>
+    </form>
+
+</div>
+<app-footer></app-footer>
